@@ -1,42 +1,328 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+/* src/App.css */
+
+/* Conteneur principal */
+.app-root {
+  min-height: 100vh;
   padding: 2rem;
-  text-align: center;
+  background: radial-gradient(circle at top, #1f2937 0, #020617 52%, #000 100%);
+  color: #f9fafb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* En-tête avec titre et bloc wallet */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-title {
+  margin: 0;
+  font-size: 2.4rem;
+  letter-spacing: 0.03em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.app-subtitle {
+  margin: 0.3rem 0 0;
+  color: #9ca3af;
+  font-size: 0.95rem;
 }
 
+/* Bloc wallet (compte / réseau / bouton) */
+.wallet-block {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 0.9rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  min-width: 260px;
+  font-size: 0.9rem;
+}
+
+.wallet-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Petite section avec les soldes et la factory */
+.balances-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Cartes génériques */
 .card {
-  padding: 2em;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 0.9rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
 }
 
-.read-the-docs {
-  color: #888;
+.small-card {
+  text-align: left;
+}
+
+.list-card {
+  margin-top: 1.5rem;
+}
+
+.form-card {
+  margin-top: 1.5rem;
+}
+
+/* Section admin en surbrillance légère */
+.admin-card {
+  margin-top: 1rem;
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: 0 18px 45px rgba(8, 47, 73, 0.8);
+}
+
+/* Titres / textes */
+h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+.balance {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.info-text {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* Lignes d'infos génériques */
+.info-row,
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.2rem 0;
+}
+
+/* Formulaire création de campagne */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.8rem;
+}
+
+.form-row label {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+.form-row input {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.45rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+/* Boutons */
+.primary-btn,
+.secondary-btn {
+  cursor: pointer;
+  border-radius: 0.55rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+  border: none;
+  outline: none;
+  transition: transform 0.08s ease, box-shadow 0.08s ease,
+    background-color 0.08s ease, border-color 0.08s ease;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  color: #f9fafb;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.65);
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 35px rgba(59, 130, 246, 0.8);
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  color: #e5e7eb;
+}
+
+.secondary-btn:hover {
+  background: rgba(30, 64, 175, 0.5);
+  border-color: rgba(129, 140, 248, 0.9);
+}
+
+/* Variantes de bouton */
+.primary-btn.small {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+.secondary-btn.full {
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+/* Campagnes : grille + cartes */
+.campaign-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.campaign-card {
+  background: radial-gradient(circle at top left, #1f2937 0, #020617 52%);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.campaign-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.campaign-id {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Badges d'état */
+.badge {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid transparent;
+}
+
+.badge-active {
+  background: rgba(22, 163, 74, 0.15);
+  border-color: rgba(34, 197, 94, 0.7);
+  color: #bbf7d0;
+}
+
+.badge-funded {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.8);
+  color: #bfdbfe;
+}
+
+.badge-failed,
+.badge-deadline-expired {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(248, 113, 113, 0.8);
+  color: #fecaca;
+}
+
+.campaign-body {
+  font-size: 0.85rem;
+}
+
+.campaign-actions {
+  margin-top: 0.5rem;
+}
+
+/* Ligne de contribution */
+.contribute-row {
+  display: grid;
+  grid-template-columns: 1.2fr auto auto;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.contribute-row input {
+  padding: 0.3rem 0.45rem;
+  border-radius: 0.45rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.85rem;
+}
+
+.suffix {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* Petites classes utilitaires */
+.label {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+.value {
+  font-size: 0.85rem;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+.truncated {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.small-text {
+  font-size: 0.8rem;
+}
+
+.role-tag {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+/* Pied de page */
+.app-footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-root {
+    padding: 1.2rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wallet-block {
+    width: 100%;
+  }
 }
